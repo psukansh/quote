@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<style>
+
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.data{
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-image: url('https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		color: white;
+		font-family: sans-serif;
+	}
+
+	.mydata{
+		width: 250px;
+	}
+</style>
+<body>
+
+	<div class="data">
+
+		<div id="mydata"></div>
+	</div>
+	
+	
+</body>
+
+<script>
+
+
+  fetch("https://quotes15.p.rapidapi.com/quotes/random/", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "quotes15.p.rapidapi.com",
+		"x-rapidapi-key": "d6d083b224mshf31d78b3f89e7ccp19f6d9jsncf8089d2773d"
+	}
+})
+
+.then(response => response.json())
+.then(data => { // NEW!
+	const div = document.getElementById("mydata") // NEW!
+  div.innerText = JSON.stringify(data.content); // NEW!
+})
+
+.catch(err => {
+	console.error(err);
+});
+
+
+</script>
+</html>
